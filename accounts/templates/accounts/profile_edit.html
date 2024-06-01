@@ -1,0 +1,40 @@
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% include "header.html" %}
+<div class="bradcam_area bradcam_bg_1">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="bradcam_text">
+                  <h3>Edit Your Profile </h3>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+    <div class="job_details_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="apply_job_form white-bg">
+                        <h4>Edit profile</h4>
+                        <form  method="post" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          {% bootstrap_form edituser %}
+                          {% bootstrap_form editprofile %}
+                          <button type="submit" class="btn btn-success mx-auto d-block w-100">Save</button>
+
+                          
+                        </form>
+                    </div>
+                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
+                            
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% include "footer.html" %}  

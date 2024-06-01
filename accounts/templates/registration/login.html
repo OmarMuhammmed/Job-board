@@ -1,0 +1,43 @@
+
+{% load static %}
+{% include "header.html" %}
+{% load django_bootstrap5 %}
+<div class="bradcam_area bradcam_bg_1">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="bradcam_text">
+                  <h3>Login</h3>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% block body %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% endif %}
+  {% endif %}
+  <p style="display: flex;  align-items: center; justify-content: center; margin: 20px;">Please login to see this page.</p>
+  <div style="display: flex; justify-content: center; align-items: center; height: 45vh;">
+    
+    <form method="post" action="{% url 'login' %}" style="width: 400px;">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-success" style="width: 100%;">Login</button>
+        <input type="hidden" name="next" value="{{ next }}">
+        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    </form>
+</div>
+
+  {# Assumes you set up the password_reset view in your URLconf #}
+{% endblock %}
+
+{% include "footer.html" %}

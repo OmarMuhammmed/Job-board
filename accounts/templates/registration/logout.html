@@ -1,0 +1,18 @@
+{% include "header.html" %}
+<div class="bradcam_area bradcam_bg_1">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="bradcam_text">
+                  <h3>Logged out!</h3>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% load static %}
+{% block body %}
+  <p>Logged out!</p>
+  <a href="{% url 'login'%}">Click here to login again.</a>
+{% endblock %}
+{% include "footer.html" %}

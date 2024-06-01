@@ -1,0 +1,96 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Job Board</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- CSS here --> 
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+<body>
+<header>
+  <div class="header-area ">
+      <div id="sticky-header" class="main-header-area">
+          <div class="container-fluid ">
+              <div class="header_bottom_border">
+                  <div class="row align-items-center">
+                      <div class="col-xl-3 col-lg-2">
+                          <div class="logo">
+                              <a href="index.html">
+                                  <img src="img/logo.png" alt="">
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-7">
+                          <div class="main-menu  d-none d-lg-block">
+                              <nav>
+                                  <ul id="navigation">
+                                      <li><a href="/">home</a></li>
+                                      <li><a href="{% url 'jobs:job_list' %}">Browse Job</a></li>
+                                      <li><a href="{% url 'contact:contact' %}">Contact</a></li>
+                                  </ul>
+                              </nav>
+                          </div>
+                      </div>
+                      <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                          <div class="Appointment">
+                            
+                          
+                              
+                            {% if request.user.is_authenticated %}  <!-- to hide Login if is_authenticated-->
+                            <div class="phone_num d-none d-xl-block">
+                              <a href="{% url 'accounts:profile' %}">My profile</a> 
+                            </div>
+                            {% else %}
+                            <div class="phone_num d-none d-xl-block">
+                              <a href="{% url 'login' %}">Log in</a> 
+                            </div>
+                              
+                            {% endif %}
+                           
+                              
+                              <div class="d-none d-lg-block">
+                                  <a class="boxed-btn3" href="{% url 'jobs:add_job' %}">Post a Job</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="mobile_menu d-block d-lg-none"></div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</header>
+{% comment %} <div class="bradcam_area bradcam_bg_1">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="bradcam_text">
+                  <h3>{{job}}</h3>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> {% endcomment %}

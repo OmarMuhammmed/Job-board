@@ -1,0 +1,29 @@
+{% load django_bootstrap5 %}
+{% load static %}
+{% include "header.html" %}
+<div class="bradcam_area bradcam_bg_1">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="bradcam_text">
+                  <h3>Sign Up</h3>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 90vh;">
+    <form method="post"  style="width: 400px;">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-success" style="width: 100%;">Sign Up</button>
+    </form>
+</div>
+
+
+
+
+{% include "footer.html" %}
+  
+
+
