@@ -1,25 +1,48 @@
-# Project Features for Job Board:
-Job Posting: Add, update, and delete job listings.
-Job Categorization: Organize job listings by categories.
-User Profiles: Create and manage user profiles for job seekers and employers.
-Application Tracking: Track job applications and statuses.
-User Authentication: Implement login and logout system for security.
-User Interface: Designed with Django templates for ease of use.
-Database Integration: Utilizes SQLite for data management.
-Installation:
-Clone the repository:
+### Project Features for Job Board:
 
-sh
-Copy code
-git clone https://github.com/OmarMuhammmed/Job-board.git
-cd Job-board
-Install the requirements:
+**Job Posting:**
 
-sh
-Copy code
-pip install -r requirements.txt
-Run the application:
+Add, update, and delete job listings.
 
-sh
-Copy code
-python manage.py runserver
+**Job Categorization:**
+
+Organize job listings by categories.
+
+**User Profiles:**
+
+Create and manage user profiles for job seekers and employers.
+
+**Application Tracking:**
+
+Track job applications and statuses.
+
+**User Authentication:**
+
+Implement login and logout system for security.
+
+**User Interface:**
+
+Designed with Django templates for ease of use.
+
+**Database Integration:**
+
+Utilizes SQLite for data management.
+
+### Installation:
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/OmarMuhammmed/Job-board.git
+   cd Job-board
+   ```
+
+2. Install the requirements:
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+3. Run the application:
+   ```sh
+   python manage.py runserver
+   ```
+
