@@ -1,10 +1,12 @@
 from django.contrib.auth import authenticate
 from django.shortcuts import render
 from django.contrib.auth import login
+from django.contrib.auth import logout 
 from django.urls import reverse
 from django.shortcuts import redirect   
 from .forms import SingupForm, EditUser, EditProfile
-from .models import Profile       
+from .models import Profile  
+from django.contrib import messages     
 # Create your views here.
 
 def signup(request) :
@@ -42,14 +44,15 @@ def profile_edit(request):
            myprofie.user = request.user
            myprofie.save()
            return redirect(reverse('accounts:profile'))
-        
     
     else :
         edituser = EditUser(instance=request.user)
-        editprofile = EditProfile(instance= profile)
-        
-
-
+        editprofile = EditProfile(instance= profile)        
     return render(request, 'accounts/profile_edit.html',{'edituser':edituser, 'editprofile':editprofile})
     
+def logout(request ):
+    profile = Profile.objects.get(user=request.user)  # get user who login
+    logoutted=logout(profile)
+    redirect('home')
+    return render(request)
 

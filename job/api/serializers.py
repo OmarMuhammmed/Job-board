@@ -1,9 +1,7 @@
-
 from rest_framework import serializers 
+from job.models import Job
 
-from .models import Job
 
-# Serializers define the API representation.
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job

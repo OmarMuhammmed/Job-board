@@ -3,18 +3,14 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 
 
-'''
- django model field : 
-    - html widget
-    - validation 
-    - db size 
-'''
+ 
 JOB_TYPE = (
     ('Full Time','Full Time'),
     ('Part Time','Part Time'),
 )
 
 def image_upload(object, filename) :
+    
     imagename, ext = filename.split(".")
     return "jobs/%s/%s.%s"%(object.id,object.id, ext)
    
@@ -30,7 +26,7 @@ class Job(models.Model):  # table
     salary = models.IntegerField(default=0)
     experience = models.IntegerField(default=1) 
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    image = models.ImageField( upload_to=image_upload)
+    image = models.ImageField( upload_to=image_upload,blank=True, null=True)
     slug = models.SlugField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
