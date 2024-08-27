@@ -5,6 +5,8 @@ from .form import Applyform,Jobform
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .filters import  JobFilter 
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -28,14 +30,14 @@ def job_list(request):
 def job_detail(request, slug):
     job_detail = Job.objects.get( slug = slug)
 
-    # from
     if request.method =='POST' :
         form = Applyform(request.POST, request.FILES)
       
         if form.is_valid() :
             myform = form.save(commit=False)
             myform.job  = job_detail
-            myform.save()    
+            myform.save() 
+            return messages.success(request,"Your Applyed from {} Succeflly...".format(job_detail.title))   
     else :
         form = Applyform()
 

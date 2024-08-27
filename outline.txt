@@ -25,6 +25,4 @@ login
 
 
 user => admin 
-passwared => 123456
-user2 => amorey 
-passwared2 => 123456
+passwared => 2020
