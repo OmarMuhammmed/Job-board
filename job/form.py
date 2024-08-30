@@ -2,7 +2,7 @@ from django import forms
 
 from .models import Apply, Job
 
-
+import pycountry
 
 class Applyform(forms.ModelForm):
 
@@ -12,10 +12,9 @@ class Applyform(forms.ModelForm):
 
 
 class Jobform(forms.ModelForm):
- 
     class Meta:
       model = Job
-      fields ='__all__'
+      fields =  '__all__'
       exclude = ('slug','owner')
      
   

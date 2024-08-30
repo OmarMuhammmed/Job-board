@@ -49,8 +49,19 @@
                 
                     </div>
                     <div class="apply_job_form white-bg">
+                   
                         <h4>Apply for the job</h4>
                         <form  method="post" enctype="multipart/form-data">
+                            {% if messages %}
+                            <div class="messages">
+                                {% for message in messages %}
+                                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                           {% csrf_token %}
                           {% bootstrap_form form %}
                         {% bootstrap_button button_type="submit" content="Apply Now" %}

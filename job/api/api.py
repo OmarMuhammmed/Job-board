@@ -15,7 +15,7 @@ def job_list_api(request):
     return Response({'data':data})
 
 
-class ManageJob(APIView):
+class JobApiView(APIView):
     def get_object(self, id):  # To access data with id
         try:
             return Job.objects.get(id=id)

@@ -50,9 +50,6 @@ def profile_edit(request):
         editprofile = EditProfile(instance= profile)        
     return render(request, 'accounts/profile_edit.html',{'edituser':edituser, 'editprofile':editprofile})
     
-def logout(request ):
-    profile = Profile.objects.get(user=request.user)  # get user who login
-    logoutted=logout(profile)
-    redirect('home')
-    return render(request)
-
+def logout_user(request):
+    logout(request)
+    return redirect('home:home')

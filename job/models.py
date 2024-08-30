@@ -9,18 +9,34 @@ JOB_TYPE = (
     ('Part Time','Part Time'),
 )
 
+COUNTRIES = (
+    ('US', 'United States'),
+    ('GB', 'United Kingdom'),
+    ('FR', 'France'),
+    ('EG', 'Egypt'),
+    ('DE', 'Germany'),
+    ('IT', 'Italy'),
+    ('ES', 'Spain'),
+    ('CN', 'China'),
+    ('JP', 'Japan'),
+)
+
 def image_upload(object, filename) :
     
     imagename, ext = filename.split(".")
     return "jobs/%s/%s.%s"%(object.id,object.id, ext)
    
 
-class Job(models.Model):  # table 
+class Job(models.Model): 
     owner = models.ForeignKey(User,related_name='job_owner',on_delete=models.CASCADE)
     title = models.CharField(max_length=100)  # column
-    # location 
     job_type = models.CharField(max_length=15 , choices=JOB_TYPE)
     description = models.TextField(max_length=1000)
+    country = models.CharField(
+        max_length=20,  
+        choices=COUNTRIES,
+        verbose_name="Select Country Job"
+    )
     published_at = models.DateTimeField(auto_now=True)
     Vacancy = models.IntegerField(default=1)
     salary = models.IntegerField(default=0)
@@ -33,7 +49,7 @@ class Job(models.Model):  # table
        self.slug = slugify(self.title)
        super(Job, self).save(*args, **kwargs) # Call the real save() method
 
-    # To appear name of Title 
+    
     def __str__(self):
       return self.title
     
@@ -41,7 +57,6 @@ class Job(models.Model):  # table
 class Category(models.Model):
     name = models.CharField(max_length=30)
 
-    # To appear name of Category
     def __str__(self):
       return self.name
 

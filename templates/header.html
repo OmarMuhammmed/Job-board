@@ -22,11 +22,15 @@
     <link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
-
+    
+    <!-- Select2 JS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 <body>
+    
 <header>
   <div class="header-area ">
       <div id="sticky-header" class="main-header-area">
@@ -59,7 +63,7 @@
                               
                             {% if request.user.is_authenticated %}  <!-- to hide Login if is_authenticated-->
                             <div class="phone_num d-none d-xl-block">
-                              <a href="{% url 'accounts:profile' %}">My profile</a> 
+                              <a href="{% url 'accounts:profile' %}">{{user.username}}</a> 
                             </div>
                             {% else %}
                             <div class="phone_num d-none d-xl-block">

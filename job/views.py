@@ -26,7 +26,7 @@ def job_list(request):
     }
     return render(request,'job/job_list.html', context)
 
-
+@login_required
 def job_detail(request, slug):
     job_detail = Job.objects.get( slug = slug)
 
@@ -36,8 +36,8 @@ def job_detail(request, slug):
         if form.is_valid() :
             myform = form.save(commit=False)
             myform.job  = job_detail
-            myform.save() 
-            return messages.success(request,"Your Applyed from {} Succeflly...".format(job_detail.title))   
+            myform.save()
+            messages.success(request, 'Your Applayed this Job Successfully..') 
     else :
         form = Applyform()
 
