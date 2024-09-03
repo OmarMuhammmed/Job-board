@@ -58,21 +58,20 @@
                       </div>
                       <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                           <div class="Appointment">
-                            
-                          
-                              
                             {% if request.user.is_authenticated %}  <!-- to hide Login if is_authenticated-->
                             <div class="phone_num d-none d-xl-block">
                               <a href="{% url 'accounts:profile' %}">{{user.username}}</a> 
                             </div>
                             {% else %}
                             <div class="phone_num d-none d-xl-block">
-                              <a href="{% url 'login' %}">Log in</a> 
+                                <a href="{% url 'accounts:signup' %}">SignUp</a> 
+                            </div>
+
+                            <div class="phone_num d-none d-xl-block">
+                              <a href="{% url 'login' %}">Login</a> 
                             </div>
                               
                             {% endif %}
-                           
-                              
                               <div class="d-none d-lg-block">
                                   <a class="boxed-btn3" href="{% url 'jobs:add_job' %}">Post a Job</a>
                               </div>
