@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Job
+from .models import Job, Apply
 from django.core.paginator import Paginator
 from .form import Applyform, Jobform
 from django.urls import reverse
@@ -11,18 +11,18 @@ from django.contrib import messages
 # Create your views here.
 
 def job_list(request):
-    job_list = Job.objects.all() # return All jobs
-    # filter :
+    job_list = Job.objects.all() 
     myfilter = JobFilter(request.GET,queryset=job_list)
     job_list = myfilter.qs 
-    paginator = Paginator(job_list, 4) # Show 4 contacts per page.
+    paginator = Paginator(job_list, 4) 
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
 
     context ={
-        'jobs' : page_obj , # Template name
-        'myfilter' : myfilter
+        'jobs' : page_obj , 
+        'myfilter' : myfilter,
+
     }
     return render(request,'job/job_list.html', context)
 

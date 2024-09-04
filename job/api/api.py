@@ -6,8 +6,6 @@ from rest_framework import generics, status
 from django.http import Http404
 from rest_framework.views import APIView
 
-
-
 @api_view(['GET'])
 def job_list_api(request):
     all_jobs = Job.objects.all() 
@@ -16,7 +14,7 @@ def job_list_api(request):
 
 
 class JobApiView(APIView):
-    def get_object(self, id):  # To access data with id
+    def get_object(self, id):  
         try:
             return Job.objects.get(id=id)
         except Job.DoesNotExist:

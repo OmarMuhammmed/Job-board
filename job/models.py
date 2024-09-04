@@ -1,6 +1,8 @@
 from django.db import models
+from django.dispatch import receiver
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 
  
@@ -44,6 +46,8 @@ class Job(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     image = models.ImageField( upload_to=image_upload,blank=True, null=True)
     slug = models.SlugField(blank=True, null=True)
+    num_applyed = models.IntegerField(default=0)
+
 
     def save(self, *args, **kwargs):
        self.slug = slugify(self.title)
@@ -52,6 +56,9 @@ class Job(models.Model):
     
     def __str__(self):
       return self.title
+    
+   
+       
     
 
 class Category(models.Model):
@@ -70,10 +77,22 @@ class Apply(models.Model):
     cv = models.FileField( upload_to='apply/', max_length=100)
     cover_letter = models.TextField(max_length=500)
     # apply_at = models.DateTimeField()
-
-    
     def __str__(self):
-        return  self.name
+       return  self.name
+
+
+@receiver(post_save, sender=Apply)
+def count_applayes(sender, instance,  **kwargs):
+    job = instance.job 
+    job.num_applyed +=1 
+    job.save()
+
+        
+    
+    
+    
+    
+        
 
   
 
