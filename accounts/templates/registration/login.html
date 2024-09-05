@@ -1,4 +1,3 @@
-
 {% load static %}
 {% include "header.html" %}
 {% load django_bootstrap5 %}
@@ -15,9 +14,6 @@
 </div>
 {% block body %}
 
-  {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-  {% endif %}
 
   {% if next %}
     {% if user.is_authenticated %}

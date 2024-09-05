@@ -28,7 +28,9 @@ INSTALLED_APPS = [
     'django_filters',
     'contact',
     'rest_framework',
-    'home', 
+    'home',
+    'celery',
+     
 
 ]
 
@@ -128,3 +130,11 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS',cast=bool)
 EMAIL_PORT = config('EMAIL_PORT', 587, cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
+
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+
+CELERY_TIMEZONE = 'UTC'

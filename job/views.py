@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .filters import  JobFilter 
 from django.contrib import messages
-
+from .tasks import email_apply
 
 # Create your views here.
 
@@ -38,6 +38,9 @@ def job_detail(request, slug):
             myform.job  = job_detail
             myform.save()
             messages.success(request, 'Your Applayed this Job Successfully..') 
+            # send email (async)
+            email_apply(request,slug)
+
     else :
         form = Applyform()
 
