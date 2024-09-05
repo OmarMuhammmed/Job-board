@@ -10,6 +10,8 @@ services:
       - '8000:8000'
     volumes:
       - .:/app 
+    environment:
+      - DJANGO_SECRET_KEY=${SECRET_KEY}  
 
  
   redis :
