@@ -12,8 +12,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost','127.0.0.1']
-# CSRF_TRUSTED_ORIGINS = ['https:host']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','job-board-production-ab44.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://job-board-production-ab44.up.railway.app']
 
 # Application definition
 
