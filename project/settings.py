@@ -10,7 +10,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost','127.0.0.1']
 
 # Application definition
 
@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'home',
     'celery',
-     
+
 
 ]
 
@@ -131,10 +131,12 @@ EMAIL_PORT = config('EMAIL_PORT', 587, cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-
-
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
-
-
+# Celery & redis without Docker 
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_TIMEZONE = 'UTC'
+
+# Celery & redis on Docker 
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0' 
+

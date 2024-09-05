@@ -1,9 +1,11 @@
-
+# 1: start docker kernal + python 
 FROM python:3.11-slim-bullseye
 
+# 2: ENV
 ENV PYTHONUNBUFFERED=1 
 
 
+# gss and  libpd-dev  is libs
 RUN apt-get update && apt-get -y install gcc libpq-dev
 
 # 4: Create project folder in kernal
