@@ -26,7 +26,7 @@
                                     <a href="#"><h4>{{job}}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                            <p> <i class="fa fa-map-marker"></i> {{job.country}}</p>
                                         </div>
                                         <div class="location">
                                             <p> <i class="fa fa-clock-o"></i> {{job.published_at}}</p>
@@ -79,7 +79,7 @@
                                 <li>Published on: <span>{{job.published_at|date:'d M Y'}}</span></li>
                                 <li>Vacancy: <span>{{job.Vacancy}}</span></li>
                                 <li>Salary: <span>{{job.salary}}k $</span></li>
-                                <li>Location: <span>California, USA</span></li>
+                                <li>Location: <span>{{job.country}}</span></li>
                                 <li>Job Nature: <span>{{job.job_type}}</span></li>
                             </ul>
                         </div>
