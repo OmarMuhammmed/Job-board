@@ -20,26 +20,21 @@
       <div class="col-12">
         <h2 class="contact-title">Get in Touch</h2>
       </div>
+      
       <div class="col-lg-8">
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
         <form class="form-contact contact_form"  method="post"  >
           {% csrf_token %}
-          <div class="row">
-            <div class="col-12">
-              <div class="form-group">
-                <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder = 'Enter Subject'>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="form-group">
-                <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder = 'Enter email address'>
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="form-group">
-                  <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder = 'Enter Message'></textarea>
-              </div>
-            </div>
-          </div>
+          {% bootstrap_form form %}
           <div class="form-group mt-3">
             <button type="submit" class="button button-contactForm btn_4 boxed-btn">Send Message</button>
           </div>
