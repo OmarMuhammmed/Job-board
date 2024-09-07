@@ -12,15 +12,15 @@ JOB_TYPE = (
 )
 
 COUNTRIES = (
-    ('US', 'United States'),
-    ('GB', 'United Kingdom'),
-    ('FR', 'France'),
-    ('EG', 'Egypt'),
-    ('DE', 'Germany'),
-    ('IT', 'Italy'),
-    ('ES', 'Spain'),
-    ('CN', 'China'),
-    ('JP', 'Japan'),
+    ('United States', 'United States'),
+    ('United Kingdom', 'United Kingdom'),
+    ('France', 'France'),
+    ('Egypt', 'Egypt'),
+    ('Germany', 'Germany'),
+    ('Italy', 'Italy'),
+    ('Spain', 'Spain'),
+    ('China', 'China'),
+    ('Japan', 'Japan'),
 )
 
 def image_upload(object, filename) :

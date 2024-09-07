@@ -10,5 +10,5 @@ urlpatterns = [
 
     # Api 
     path('api/jobs/', api.job_list_api ,name='job_list_api'),
-    path('api/jobs/<int:id>/', api.JobApiView.as_view(), name='ManageJob'),
+    path('api/jobs/<int:id>/', api.JobApiView.as_view(), name='JobApiView'),
 ]
