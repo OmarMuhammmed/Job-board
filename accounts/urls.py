@@ -11,6 +11,7 @@ urlpatterns = [
     path('logout_user/', views.logout_user,name='logout_user'),
     # Api
     path('api/sinup/', apiviews.SignUpView.as_view()),
-    path('api/login/', apiviews.LoginView.as_view())
+    path('api/login/', apiviews.LoginView.as_view()),
+    path('api/logout/', apiviews.LogoutView.as_view())
    
 ]

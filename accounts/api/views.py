@@ -7,6 +7,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
+
+
 class SignUpView(mixins.CreateModelMixin, generics.GenericAPIView):
     queryset = User.objects.all()
     serializer_class = SignUpSerializer
@@ -15,7 +17,7 @@ class SignUpView(mixins.CreateModelMixin, generics.GenericAPIView):
         return self.create(request, *args, **kwargs)
     
 class LoginView(APIView):
-    authentication_classes = [AllowAny]
+    permission_classes = [AllowAny]
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
@@ -27,7 +29,9 @@ class LoginView(APIView):
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
 class LogoutView(APIView):
-    authentication_classes = [IsAuthenticated]   
+    permission_class = [IsAuthenticated]   
     def post(self,request):
         logout(request)
         return Response({'message': 'Logged out successfully!'}, status=status.HTTP_200_OK)
+
+
