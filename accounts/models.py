@@ -9,12 +9,15 @@ class PasswordReset(models.Model):
     token = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    
+
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='profile',on_delete=models.CASCADE)
     city = models.ForeignKey('City', related_name='user_city', on_delete=models.CASCADE ,blank=True, null=True)
     phone_number = models.CharField( max_length=15)
     image = models.ImageField( upload_to='profile/',blank=True, null=True)
+    reset_password_token = models.CharField(max_length=50,default="",blank=True)
+    reset_password_expire = models.DateTimeField(blank=True,null=True)
+
 
     def __str__(self):
         return str(self.user)

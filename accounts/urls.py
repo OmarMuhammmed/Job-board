@@ -12,6 +12,8 @@ urlpatterns = [
     # Api
     path('api/sinup/', apiviews.SignUpView.as_view()),
     path('api/login/', apiviews.LoginView.as_view()),
-    path('api/logout/', apiviews.LogoutView.as_view())
+    path('api/logout/', apiviews.LogoutView.as_view()),
+    path('api/forgot-password/', apiviews.ForgotPassword.as_view()),
+    path('api/reset-password/<str:token>/', apiviews.ResetPassword.as_view())
    
 ]
