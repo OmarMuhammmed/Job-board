@@ -12,6 +12,7 @@ from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import check_password
 
 
 class SignUpView(mixins.CreateModelMixin, generics.GenericAPIView):
@@ -40,6 +41,24 @@ class LogoutView(APIView):
         return Response({'message': 'Logged out successfully!'}, status=status.HTTP_200_OK)
 
 
+class ChangePassword(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        data = request.data
+        user = request.user  
+
+        if not check_password(data['current_password'], user.password):
+            return Response({'message': 'The current password is incorrect'}, status=status.HTTP_400_BAD_REQUEST)
+
+        if data['new_password'] != data['confirm_new_password']:
+            return Response({'message': 'The new password does not match the confirm new password'}, status=status.HTTP_400_BAD_REQUEST)
+
+        user.set_password(data['new_password'])
+        user.save()
+
+        return Response({'message': 'Password changed successfully!'}, status=status.HTTP_200_OK)
+
 class ForgotPassword(APIView):
     def post(self, request):
         data = request.data 
@@ -51,7 +70,7 @@ class ForgotPassword(APIView):
         expire_data = datetime.now() + timedelta(minutes=30)
         
         # save token,expire_data in profile 
-        user.profile.reset_password_token = token # relatedname = 'profile'
+        user.profile.reset_password_token = token 
         user.profile.reset_password_expire = expire_data
         user.profile.save()
         
@@ -90,5 +109,5 @@ class ResetPassword(APIView):
         user.save()
         
         
-        return Response({'details':'password reset Done '})
+        return Response({'details':'Password reset Sucessfully.. '})
 
