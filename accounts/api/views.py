@@ -1,6 +1,6 @@
 from rest_framework import mixins, generics
 from rest_framework.views import APIView
-from .serializers import SignUpSerializer
+from .serializers import SignUpSerializer,UserSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from rest_framework.response import Response
@@ -111,3 +111,26 @@ class ResetPassword(APIView):
         
         return Response({'details':'Password reset Sucessfully.. '})
 
+class UserProfile(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self,request):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response({'profile':serializer.data})
+    
+    def put(self,request):
+        user = request.user 
+        data = request.data 
+        
+        # Update 
+        user.first_name = data['first_name'] 
+        user.last_name = data['last_name'] 
+        user.username = data['username'] 
+        user.email = data['email']    
+
+        user.save()
+        serializer = UserSerializer(user,many=False) 
+                
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+  
