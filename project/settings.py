@@ -1,7 +1,7 @@
+from datetime import timedelta
 from pathlib import Path
 import os
 from decouple import config
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,7 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS',cast=bool)
-EMAIL_PORT = config('EMAIL_PORT', 587, cast=int)
+EMAIL_PORT = config('EMAIL_PORT',cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
@@ -144,4 +144,23 @@ CELERY_TIMEZONE = 'UTC'
 # Celery & redis on Docker 
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = 'redis://redis:6379/0' 
+
+
+# Rest Api config 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+   
+}
+
+SIMPLE_JWT = {
+  "ACCESS_TOKEN_LIFETIME" : timedelta(days= 15),
+  "REFRECH_TOKEN_LIFETIME" : timedelta(days= 1),
+  "BLACKLIST_AFTER_ROTATION": True, # if you change token the old token filed 
+  "AUTH_HEADER_TYPES": ("Bearer",), # type to test in postman 
+  "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+
+}
 
