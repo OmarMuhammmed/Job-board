@@ -10,6 +10,6 @@ urlpatterns = [
 
     # Api 
     path('api/jobs/', apiviews.job_list_api ,name='job_list_api'),
-    path('api/jobs/<int:id>/', apiviews.JobApiView.as_view(), name='JobApiView'),
     path('api/jobs/add/', apiviews.add_job, name='add_job'),
+    path('api/jobs/<str:slug>/', apiviews.JobDetailAPI.as_view(), name='add_job'),
 ]
