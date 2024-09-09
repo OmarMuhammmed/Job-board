@@ -18,7 +18,7 @@ from django.contrib.auth.hashers import check_password
 class SignUpView(mixins.CreateModelMixin, generics.GenericAPIView):
     queryset = User.objects.all()
     serializer_class = SignUpSerializer
-    authentication_classes = [AllowAny]
+    
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
     
