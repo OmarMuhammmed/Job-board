@@ -160,8 +160,8 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
   "ACCESS_TOKEN_LIFETIME" : timedelta(days= 15),
   "REFRECH_TOKEN_LIFETIME" : timedelta(days= 1),
-  "BLACKLIST_AFTER_ROTATION": True, # if you change token the old token filed 
-  "AUTH_HEADER_TYPES": ("Bearer",), # type to test in postman 
+  "BLACKLIST_AFTER_ROTATION": True, 
+  "AUTH_HEADER_TYPES": ("Bearer",), 
   "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
 
 }
