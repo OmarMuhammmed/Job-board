@@ -9,7 +9,7 @@ click-didyoumean==0.3.1
 click-plugins==1.1.1
 click-repl==0.3.0
 colorama==0.4.6
-Django==5.0.7
+Django==5.1.15
 django-admin-interface==0.28.8
 django-allauth==64.2.1
 django-bootstrap5==24.2
